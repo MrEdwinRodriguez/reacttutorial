@@ -13,23 +13,31 @@
     <div id="app"></div>
 
     <script type="text/babel">
-  
-    var FirstComponent = React.createClass({
+    
+    var SecondComponent = React.createClass({
+    
+      propTypes:{
+      name: React.PropTypes.string.isRequired,
+      location: React.PropTypes.string.isRequired
+      },
+    
+
     render: function(){
-      return (
+    let name = this.props.name;
+    return(
       <div>
-      <h1>This is our first component</h1>
-      <h2>Hello World</h2>
+      <p>Hello, {name}! </p>
+      <p>I live in, {this.props.location}! </p>
       </div>
-      )         
-            } 
-        });
+    )
+    }
+    });
 
- ReactDOM.render(
-    <FirstComponent />,
+    ReactDOM.render(
+    <SecondComponent name="Edwin" location="Orlando" />,
     document.getElementById('app')
-    );
-
+    ); 
+ 
 
     </script>
 </body>
