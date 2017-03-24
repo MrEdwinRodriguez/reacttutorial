@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>React tutorial</title>
-    <script src="https://fb.me/react-0.14.7.js"></script>
-    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
 </head>
 
@@ -16,13 +16,23 @@
     
     var SecondComponent = React.createClass({
     
+    <!-- proptypes is for development only -->
       propTypes:{
       name: React.PropTypes.string.isRequired,
       location: React.PropTypes.string.isRequired
       },
+
+      <!--if you forget to provice a required proptype  -->
+      getDefaultProps: function() {
+      return {
+      name: 'Peter',
+      location: "New York"
+      }
+      },
     
 
     render: function(){
+    <!-- give name the value of this.props.name -->
     let name = this.props.name;
     return(
       <div>
@@ -33,6 +43,7 @@
     }
     });
 
+<!-- passes name and location properties -->
     ReactDOM.render(
     <SecondComponent name="Edwin" location="Orlando" />,
     document.getElementById('app')

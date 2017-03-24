@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React tutorial</title>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lesson5challengestyling.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+    var StateChallenge = React.createClass({
+
+      incrementTotal: function(value){
+        this.setState({
+          total: this.state.total + value
+        })
+      },
+      
+      getInitialState: function(){
+      return {
+        total: 0
+        }
+      },
+      render: function(){
+          return(
+            <div className='container'>
+              <h1>Count: {this.state.total}</h1>
+              <button className='btn blue-btn' onClick={this.incrementTotal.bind(this, 1)}>1</button>
+              <button className='btn green-btn' onClick={this.incrementTotal.bind(this, 5)}>5</button>
+              <button className='btn purple-btn' onClick={this.incrementTotal.bind(this, 10)}>10</button>
+            </div>
+            )
+      }
+
+    })
+
+    ReactDOM.render(
+      <StateChallenge />,
+      document.getElementById('app')
+      );
+
+
+    </script>
+  </body>
+</html>

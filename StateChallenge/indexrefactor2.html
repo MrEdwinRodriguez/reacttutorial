@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React tutorial</title>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lesson5challengestyling.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+    var StateChallenge = React.createClass({
+
+      incrementTotal: function(value){
+        this.setState({
+          total: this.state.total + value
+        })
+      },
+      
+      getInitialState: function(){
+      return {
+        total: 0
+        }
+      },
+
+        getDefaultProps: function(){
+            return{
+            valueOne: 1,
+            valueTwo: 5, 
+            valueThree: 10
+            }
+        },
+
+      render: function() {
+          return(
+            <div className='container'>
+              <h1>Count: {this.state.total}</h1>
+              <Button value={this.props.valueOne} clickHandler={this.incrementTotal.bind(this, this.props.valueOne)} />
+              <Button value= {this.props.valueTwo} clickHandler={this.incrementTotal.bind(this, this.props.valueTwo)} />
+              <Button  value= {this.props.valueThree} clickHandler={this.incrementTotal.bind(this, this.props.valueThree)} />
+            </div>
+            )
+      }
+
+    })
+
+
+  var Button = function(props){
+        return(
+          <button value={props.value} onClick= {props.clickHandler}>ADD {props.value}</button>
+        )
+    };
+
+    ReactDOM.render(
+      <StateChallenge />,
+      document.getElementById('app')
+      );
+
+
+    </script>
+  </body>
+</html>

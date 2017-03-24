@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React tutorial</title>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="lesson10styling.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+          class Counter extends React.Component{
+
+          constructor (props){
+            super(props);
+            this.state = {count: 0};
+            this.click = this.click.bind(this);
+          }
+
+          incrementCount(value){
+          this.setState({
+            count: this.state.count + value
+          })
+          }
+
+          render(){
+            return(
+              <div className='container'>
+                <h1>Count: {this.props.count}</h1>
+                  <Button className="btn blue-btn" clickHandler={this.click} text="Click me!" />
+              </div>
+            )
+            }
+            };
+
+  
+  Counter.defaultProps = { 
+    valueOne:1,
+    valueTwo: 5,
+    valuethree: 10,
+    text: 'Add'
+   } 
+
+
+  const Button = (props) => {
+  return(
+    <button className={props.style} value={props.value} onClick={props.clickHandler}>{props.text}</button>
+    )
+  }
+
+    ReactDOM.render(
+      <Counter />,
+      document.getElementById('app')
+    );
+
+
+    </script>
+  </body>
+</html>
